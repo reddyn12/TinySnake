@@ -152,7 +152,8 @@ def capture_state(state: State, game_id, move_id, subdir='data'):
   # with open(filename, 'wb') as f:
   #   pickle.dump(obj, f)
 
-capture_state(sample_state, 'test_sample', 1)
+# capture_state(sample_state, 'test_sample', 1)
+
 def load_state(game_id, move_id, subdir='data') -> State:
     path = Path.cwd()/subdir/game_id
     # board = np.load(path/f'{move_id}.npz')['board']
