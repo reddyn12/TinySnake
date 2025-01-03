@@ -193,18 +193,23 @@ def play_game(subdir='data', show_game=False, move_func=random_valid_move, log=F
     e = time.perf_counter()
     if save_game: capture_state(state, game_id, move_id, subdir)
     if log: stats['step_times'].append(e-s)
-  stats['move_cnt'] = move_id
+  if log: stats['move_cnt'] = move_id
+  if log: stats['score'] = state.score
   return stats
 
 # GAME LOOP
 game_cnt = 0
 game_times = []
+scores = []
 while game_cnt<100:
   # print('PLAYING GAME:', game_cnt)
   game_cnt+=1
   stats = play_game('data/test', log=True, save_game=False)
   game_times = game_times+stats['step_times']
+  scores.append(stats['score'])
 print('STEPS/SEC:', 1/np.array(game_times).mean())
+print('SCORE:', np.array(scores).mean())
+
 # print('TIME/step:', np.array(game_times).mean())
 
 
