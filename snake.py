@@ -186,7 +186,6 @@ def play_game(subdir='data', show_game=False, move_func=random_valid_move, log=F
     if show_game: show_board(state, .001)
     move = move_func(state)
     # MUDDY logic with move being none for capturing state....
-    state.move = move
     if move is None: game_over = True
     else: make_move(state, move)
     move_id+=1
